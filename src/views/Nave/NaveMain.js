@@ -2,14 +2,14 @@ import useFetch from 'hooks/useFetch'
 
 import * as service from 'service'
 
-import { NaveForm } from './components'
+import { NaveTable } from './components'
 
-const Nave = () => {
+const NaveMain = () => {
   const { response } = useFetch(service.patoMultiverso.nave.list, {})
 
   const naves = response?.data?.naves
 
-  return <NaveForm />
+  return <NaveTable />
 }
 
-export default Nave
+export default NaveMain
