@@ -12,6 +12,7 @@ import useStyles from './styles'
 
 const Pato = () => {
   const classes = useStyles()
+
   const [isGlassesOn, setIsGlassesOn] = useState(false)
   const [selectedPato, setSelectedPato] = useState(null)
   const [armaSelecionada, setArmaSelecionada] = useState('')

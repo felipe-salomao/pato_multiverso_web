@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { isEmpty } from 'lodash'
+
 import {
   Button,
   TextField,
@@ -14,8 +16,12 @@ import {
 
 import * as service from 'service'
 import constants from 'constants/index'
+import useStyles from './styles'
 
 const NaveForm = () => {
+  const classes = useStyles()
+
+  const [currentPotential, setCurrentPotential] = useState('')
   const [formData, setFormData] = useState({
     potencial: [],
     tamanho: '',
@@ -28,8 +34,6 @@ const NaveForm = () => {
     grauAvaria: '',
     periculosidade: '',
   })
-
-  const [currentPotential, setCurrentPotential] = useState('')
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -65,7 +69,7 @@ const NaveForm = () => {
       window.location.reload()
       alert('Formulário enviado com sucesso!')
     } catch (error) {
-      alert('Erro ao enviar o formulário!')
+      alert(error?.response?.data?.errors)
     }
   }
 
@@ -73,8 +77,8 @@ const NaveForm = () => {
 
   return (
     <Container maxWidth="md">
-      <Typography variant="h4" component="h1" gutterBottom>
-        Formulário da Nave
+      <Typography variant="h4" component="h1" gutterBottom className={classes.typography}>
+        Registre a Nave
       </Typography>
       <form onSubmit={handleSubmit}>
         <Grid container spacing={3}>
@@ -82,11 +86,13 @@ const NaveForm = () => {
             <TextField
               label="Potencial de prospecção tecnológica"
               fullWidth
-              required
+              className={classes.textField}
               value={currentPotential}
+              required={isEmpty(formData.potencial)}
               onChange={(e) => setCurrentPotential(e.target.value)}
               onKeyDown={handlePotentialKeyDown}
-              helperText="Digite o potencial e pressione Enter para adicionar."
+              helperText="Digite o potencial e pressione ENTER para adicionar."
+              variant="outlined"
             />
             <div>
               {formData.potencial.map((potencial, index) => (
@@ -109,18 +115,25 @@ const NaveForm = () => {
               inputProps={{ min: 0, step: 1 }}
               value={formData.tripulantes}
               onChange={handleChange}
+              variant="outlined"
+              className={classes.textField}
             />
           </Grid>
 
           {fields.map((field) => (
             <Grid item xs={6} key={field.id}>
-              <FormControl fullWidth>
-                <InputLabel id={`${field.id}-label`}>{field.name}</InputLabel>
+              <FormControl variant="outlined" fullWidth className={classes.formControl}>
+                <InputLabel id={`${field.id}-label`} style={{ color: 'white' }}>
+                  {field.name}
+                </InputLabel>
                 <Select
                   labelId={`${field.id}-label`}
                   name={field.id}
                   value={formData[field.id]}
                   onChange={handleChange}
+                  label={field.name}
+                  style={{ color: 'white', textTransform: 'uppercase' }}
+                  required={field.required}
                 >
                   {field.values.map((item) => (
                     <MenuItem key={item.value} value={item.value} style={{ textTransform: 'uppercase' }}>

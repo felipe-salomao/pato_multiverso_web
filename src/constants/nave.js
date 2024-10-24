@@ -119,14 +119,14 @@ const LOCAL_FIELDS = [
 ]
 
 const NAVE_FIELDS = [
-  { id: 'local', name: 'Local da queda', values: LOCAL_FIELDS },
-  { id: 'saudeTripulantes', name: 'Estado dos tripulantes', values: SAUDE_TRIP_FIELDS },
-  { id: 'grauAvaria', name: 'Grau de avaria', values: AVARIA_FIELDS },
-  { id: 'periculosidade', name: 'Grau de periculosidade', values: PERIC_FIELDS },
-  { id: 'combustivel', name: 'Tipo de combustível', values: COMBUSTIVEL_FIELDS },
-  { id: 'armamentos', name: 'Armamentos', values: ARMAMENTOS_FIELDS },
-  { id: 'cor', name: 'Cor', values: COR_FIELDS },
-  { id: 'tamanho', name: 'Tamanho', values: TAMANHO_FIELDS },
+  { id: 'local', name: 'Local da queda', values: LOCAL_FIELDS, required: true },
+  { id: 'saudeTripulantes', name: 'Estado dos tripulantes', values: SAUDE_TRIP_FIELDS, required: false },
+  { id: 'grauAvaria', name: 'Grau de avaria', values: AVARIA_FIELDS, required: true },
+  { id: 'periculosidade', name: 'Grau de periculosidade', values: PERIC_FIELDS, required: true },
+  { id: 'combustivel', name: 'Tipo de combustível', values: COMBUSTIVEL_FIELDS, required: true },
+  { id: 'armamentos', name: 'Armamentos', values: ARMAMENTOS_FIELDS, required: false },
+  { id: 'cor', name: 'Cor', values: COR_FIELDS, required: false },
+  { id: 'tamanho', name: 'Tamanho', values: TAMANHO_FIELDS, required: true },
 ]
 
 const nave = { NAVE_FIELDS }
