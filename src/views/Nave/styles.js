@@ -26,6 +26,16 @@ const useStyles = makeStyles({
     marginTop: 80,
     zIndex: 3,
   },
+  boxContainer: {
+    zIndex: 3,
+  },
+  paper: {
+    padding: 30,
+    maxWidth: 700,
+    zIndex: 3,
+    backgroundColor: '#f0f0f0',
+    textAlign: 'center',
+  },
 })
 
 export default useStyles

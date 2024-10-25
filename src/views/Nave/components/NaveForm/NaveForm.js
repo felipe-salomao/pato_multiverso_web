@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { isEmpty } from 'lodash'
 
 import {
@@ -19,6 +20,7 @@ import constants from 'constants/index'
 import useStyles from './styles'
 
 const NaveForm = () => {
+  const navigate = useNavigate()
   const classes = useStyles()
 
   const [currentPotential, setCurrentPotential] = useState('')
@@ -64,10 +66,10 @@ const NaveForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      await service.patoMultiverso.nave.create({ ...formData })
+      const response = await service.patoMultiverso.nave.create({ ...formData })
 
-      window.location.reload()
       alert('Formulário enviado com sucesso!')
+      navigate(`/naves/show/${response.data.id}`)
     } catch (error) {
       alert(error?.response?.data?.errors)
     }
@@ -91,7 +93,7 @@ const NaveForm = () => {
               required={isEmpty(formData.potencial)}
               onChange={(e) => setCurrentPotential(e.target.value)}
               onKeyDown={handlePotentialKeyDown}
-              helperText="Digite o potencial e pressione ENTER para adicionar."
+              helperText="Digite os potenciais tecnológicos e pressione ENTER para adicionar."
               variant="outlined"
             />
             <div>

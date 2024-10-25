@@ -10,4 +10,8 @@ const create = async ({ ...params }) => {
   return await nave.post('naves', { ...params })
 }
 
-export default { list, create }
+const show = async ({ naveId }) => {
+  return await nave.get(`naves/${naveId}`)
+}
+
+export default { list, create, show }

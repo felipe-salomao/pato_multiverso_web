@@ -129,6 +129,28 @@ const NAVE_FIELDS = [
   { id: 'tamanho', name: 'Tamanho', values: TAMANHO_FIELDS, required: true },
 ]
 
-const nave = { NAVE_FIELDS }
+const CLASSIFICACAO_INFO = (
+  <>
+    <strong>Fonte de Energia Alternativa:</strong> Potencial tecnológico maior que 2 e o tipo de combustível é gelatina
+    quântica ou chiclete estelar.
+    <br />
+    <strong>Joia Tecnológica:</strong> Potencial tecnológico maior que 2 e a nave é de tamanho grande ou colossal.
+    <br />
+    <strong>Arsenal Alienígena:</strong> Os armamentos que a nave possuí é algum desses três (fuzil, escopeta ou raio
+    laser).
+    <br />
+    <strong>Ameaça em Potencial:</strong> A nave possuí armamentos e o nível de periculosidade é alto ou severo.
+    <br />
+    <strong>Explosão Cósmica:</strong> A nave está parcialmente destruída ou muito destruída e a nave caiu em um
+    continente.
+    <br />
+    <strong>Refúgio Alienígena:</strong> A nave possuí 5 ou mais tripulantes e a saúde desses tripulantes está capenga.
+    <br />
+    <strong>Sucata Espacial:</strong> Se a nave não se enquadra em nenhum desses casos, ela não serve pra nada. JOGA
+    FORA!
+  </>
+)
+
+const nave = { NAVE_FIELDS, CLASSIFICACAO_INFO }
 
 export default nave

@@ -9,6 +9,7 @@ const Routes = () => {
         <Route path={routes.pato} element={<Pato />} />
         <Route path={routes.nave.new} element={<Nave.NaveNew />} />
         <Route path={routes.nave.all} element={<Nave.NaveMain />} />
+        <Route path={routes.nave.show} element={<Nave.NaveShow />} />
       </Switch>
     </BrowserRouter>
   )
@@ -20,6 +21,7 @@ export const routes = {
   nave: include('/naves', {
     all: '',
     new: 'new',
+    show: 'show/:naveId',
   }),
 
   pato: '/pato',
