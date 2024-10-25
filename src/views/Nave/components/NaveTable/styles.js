@@ -1,6 +1,10 @@
 import { makeStyles } from '@material-ui/core'
 
 const useStyles = makeStyles({
+  root: {
+    maxWidth: 1500,
+    marginLeft: 200,
+  },
   table: {
     minWidth: 650,
     '& thead th': {
