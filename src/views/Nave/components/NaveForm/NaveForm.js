@@ -75,12 +75,16 @@ const NaveForm = () => {
     }
   }
 
+  const handleList = () => {
+    navigate('/naves')
+  }
+
   const fields = constants.nave.NAVE_FIELDS
 
   return (
     <Container maxWidth="md">
       <Typography variant="h4" component="h1" gutterBottom className={classes.typography}>
-        Registre a Nave
+        REGISTRE AS INFORMAÇÕES SOBRE A NAVE
       </Typography>
       <form onSubmit={handleSubmit}>
         <Grid container spacing={3}>
@@ -149,7 +153,13 @@ const NaveForm = () => {
 
           <Grid item xs={12}>
             <Button type="submit" variant="contained" color="primary" fullWidth>
-              Enviar
+              Registrar
+            </Button>
+          </Grid>
+
+          <Grid item xs={12}>
+            <Button variant="contained" color="success" onClick={handleList} fullWidth>
+              Listagem das naves
             </Button>
           </Grid>
         </Grid>

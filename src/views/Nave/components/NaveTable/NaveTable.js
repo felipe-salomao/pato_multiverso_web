@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom'
 
 import {
   Box,
+  Button,
+  Grid,
   Table,
   TableBody,
   TableCell,
@@ -35,60 +37,78 @@ const NaveTable = ({ naves, isLoading }) => {
     setPage(0)
   }
 
-  const handlePagina = (naveId) => {
-    navigate(`/naves/show/${naveId}`)
+  const handlePagina = (rota, naveId) => {
+    if (rota === 'show') {
+      navigate(`/naves/show/${naveId}`)
+    } else if (rota === 'new') {
+      navigate('/naves/new')
+    } else {
+      navigate('/pato')
+    }
   }
 
   return (
-    <>
-      {!isLoading && naves && naves.length > 0 ? (
-        <TableContainer component={Paper} className={classes.root}>
-          <Table className={classes.table} aria-label="Tabela de Naves Alienígenas">
-            <TableHead>
-              <TableRow>
-                <TableCell>ID</TableCell>
-                <TableCell align="center">Classificação</TableCell>
-                <TableCell align="center">Tamanho</TableCell>
-                <TableCell align="center">Local</TableCell>
-                <TableCell align="center">Ações</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {naves.slice(page * navesPerPage, page * navesPerPage + navesPerPage).map((nave, index) => (
-                <TableRow key={index}>
-                  <TableCell>{nave.id}</TableCell>
-                  <TableCell align="center">{nave.classificacao}</TableCell>
-                  <TableCell align="center">{nave.tamanho}</TableCell>
-                  <TableCell align="center">{nave.local}</TableCell>
-                  <TableCell align="center">
-                    <Box className={classes.actions}>
-                      <Tooltip title="Visualizar">
-                        <IconButton color="primary" aria-label="show" onClick={() => handlePagina(nave.id)}>
-                          <VisibilityIcon />
-                        </IconButton>
-                      </Tooltip>
-                    </Box>
-                  </TableCell>
+    <Grid container spacing={3} className={classes.root}>
+      <Grid item xs={6}>
+        <Button variant="contained" color="primary" fullWidth onClick={() => handlePagina('new')}>
+          Registrar outra nave
+        </Button>
+      </Grid>
+      <Grid item xs={6}>
+        <Button variant="contained" color="secondary" fullWidth onClick={() => handlePagina('pato')}>
+          Caçar os patos
+        </Button>
+      </Grid>
+      <Grid item xs={12}>
+        {!isLoading && naves && naves.length > 0 ? (
+          <TableContainer component={Paper}>
+            <Table className={classes.table} aria-label="Tabela de Naves Alienígenas">
+              <TableHead>
+                <TableRow>
+                  <TableCell>ID</TableCell>
+                  <TableCell align="center">Classificação</TableCell>
+                  <TableCell align="center">Tamanho</TableCell>
+                  <TableCell align="center">Local</TableCell>
+                  <TableCell align="center">Ações</TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
+              </TableHead>
+              <TableBody>
+                {naves.slice(page * navesPerPage, page * navesPerPage + navesPerPage).map((nave, index) => (
+                  <TableRow key={index}>
+                    <TableCell>{nave.id}</TableCell>
+                    <TableCell align="center">{nave.classificacao}</TableCell>
+                    <TableCell align="center">{nave.tamanho}</TableCell>
+                    <TableCell align="center">{nave.local}</TableCell>
+                    <TableCell align="center">
+                      <Box className={classes.actions}>
+                        <Tooltip title="Visualizar">
+                          <IconButton color="primary" aria-label="show" onClick={() => handlePagina('show', nave.id)}>
+                            <VisibilityIcon />
+                          </IconButton>
+                        </Tooltip>
+                      </Box>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
 
-          <TablePagination
-            rowsPerPageOptions={[5, 10, 25]}
-            component="div"
-            count={naves.length}
-            rowsPerPage={navesPerPage}
-            page={page}
-            onPageChange={handleChangePage}
-            onRowsPerPageChange={handleChangeNavesPerPage}
-            labelRowsPerPage="Linhas por página"
-          />
-        </TableContainer>
-      ) : (
-        <Box>Carregando...</Box>
-      )}
-    </>
+            <TablePagination
+              rowsPerPageOptions={[5, 10, 25]}
+              component="div"
+              count={naves.length}
+              rowsPerPage={navesPerPage}
+              page={page}
+              onPageChange={handleChangePage}
+              onRowsPerPageChange={handleChangeNavesPerPage}
+              labelRowsPerPage="Linhas por página"
+            />
+          </TableContainer>
+        ) : (
+          <Box>Carregando...</Box>
+        )}
+      </Grid>
+    </Grid>
   )
 }
 

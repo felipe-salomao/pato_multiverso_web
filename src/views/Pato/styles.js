@@ -70,7 +70,6 @@ const useStyles = makeStyles(() => ({
   armaSelect: {
     minWidth: 200,
     position: 'relative',
-    marginTop: 70,
     marginRight: 30,
     zIndex: 11,
     '& .MuiOutlinedInput-root': {
@@ -87,6 +86,10 @@ const useStyles = makeStyles(() => ({
         color: 'white', // Cor do ícone do Select
       },
     },
+  },
+  botaoList: {
+    margin: 20,
+    zIndex: 11,
   },
 }))
 

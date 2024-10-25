@@ -32,8 +32,6 @@ const NaveShow = () => {
   const handlePagina = (rota) => {
     if (rota === 'all') {
       navigate('/naves')
-    } else if (rota === 'new') {
-      navigate('/naves/new')
     } else {
       navigate('/pato')
     }
@@ -74,13 +72,10 @@ const NaveShow = () => {
             </Typography>
           </Paper>
           <Box display="flex" justifyContent="space-between" marginTop={2}>
-            <Button variant="contained" color="primary" onClick={() => handlePagina('new')}>
-              Registrar outra nave
+            <Button variant="contained" color="success" fullWidth onClick={() => handlePagina('all')}>
+              Listagem das naves
             </Button>
-            <Button variant="contained" color="success" onClick={() => handlePagina('all')}>
-              Listagem de naves
-            </Button>
-            <Button variant="contained" color="secondary" onClick={() => handlePagina('pato')}>
+            <Button variant="contained" color="secondary" fullWidth onClick={() => handlePagina('pato')}>
               Caçar os patos
             </Button>
           </Box>

@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+
 import { Box, Typography, Button, Select, MenuItem, FormControl, InputLabel } from '@material-ui/core'
+
 import patoImg from 'images/pato.png'
 import binoculosImg from 'images/binoculos.jpg'
 
@@ -11,6 +14,7 @@ import constants from 'constants/index'
 import useStyles from './styles'
 
 const Pato = () => {
+  const navigate = useNavigate()
   const classes = useStyles()
 
   const [isGlassesOn, setIsGlassesOn] = useState(false)
@@ -75,6 +79,10 @@ const Pato = () => {
     }
   }
 
+  const handleList = () => {
+    navigate('/naves')
+  }
+
   const patos = constants.pato.PATOS_GERAL
 
   return (
@@ -100,6 +108,9 @@ const Pato = () => {
             </Box>
           )
       )}
+      <Button variant="contained" color="success" onClick={handleList} className={classes.botaoList}>
+        Listagem das naves
+      </Button>
 
       <Box display="flex" flexDirection="column" alignItems="end" marginTop={2}>
         <Button
