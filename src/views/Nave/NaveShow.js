@@ -41,7 +41,9 @@ const NaveShow = () => {
     <Box className={classes.root} display="flex" justifyContent="center" alignItems="center" minHeight="100vh">
       <Box className={classes.overlay} />
       {isLoading ? (
-        <Box>Carregando</Box>
+        <Typography variant="h1" className={classes.boxContainer}>
+          Carregando...
+        </Typography>
       ) : (
         <Box className={classes.boxContainer}>
           <Paper elevation={3} className={classes.paper}>
@@ -62,9 +64,8 @@ const NaveShow = () => {
             <Typography variant="body2" paragraph>
               Essa classificação reflete a análise das características e potenciais da sua nave, levando em conta
               aspectos como tecnologia, local da queda, quantidade de tripulantes, tipo de combustível, tamanho da nave,
-              armamentos e grau de periculosidade. Uma nave classificada como{' '}
-              <span style={{ fontWeight: 'bold' }}>{nave?.classificacao}</span> pode ser altamente valorizada em
-              diferentes cenários e traz consigo uma série de implicações estratégicas.
+              armamentos e grau de periculosidade. Para entender como a nave foi classificada do tipo{' '}
+              <span style={{ fontWeight: 'bold' }}>{nave?.classificacao}</span>, basta clicar no botão de ajuda.
             </Typography>
             <Typography variant="body2">
               Continue explorando as possibilidades que essa nave oferece e descubra como ela pode ser uma peça-chave

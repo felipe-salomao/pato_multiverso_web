@@ -15,6 +15,8 @@ import {
   Chip,
 } from '@material-ui/core'
 
+import { AlertDialog } from 'components'
+
 import * as service from 'service'
 import constants from 'constants/index'
 import useStyles from './styles'
@@ -23,6 +25,8 @@ const NaveForm = () => {
   const navigate = useNavigate()
   const classes = useStyles()
 
+  const [openAlert, setOpenAlert] = useState(false)
+  const [alertMessage, setAlertMessage] = useState('')
   const [currentPotential, setCurrentPotential] = useState('')
   const [formData, setFormData] = useState({
     potencial: [],
@@ -68,10 +72,15 @@ const NaveForm = () => {
     try {
       const response = await service.patoMultiverso.nave.create({ ...formData })
 
-      alert('Formulário enviado com sucesso!')
-      navigate(`/naves/show/${response.data.id}`)
+      setAlertMessage('Nave registrada com sucesso!')
+      setOpenAlert(true)
+
+      setTimeout(() => {
+        navigate(`/naves/show/${response.data.id}`)
+      }, 2000)
     } catch (error) {
-      alert(error?.response?.data?.errors)
+      setAlertMessage(error?.response?.data?.errors)
+      setOpenAlert(true)
     }
   }
 
@@ -164,6 +173,8 @@ const NaveForm = () => {
           </Grid>
         </Grid>
       </form>
+
+      <AlertDialog open={openAlert} title="Sucesso" message={alertMessage} form />
     </Container>
   )
 }

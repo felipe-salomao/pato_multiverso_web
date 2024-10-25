@@ -6,7 +6,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />
 })
 
-const AlertDialog = ({ open, handleClose, title, message }) => {
+const AlertDialog = ({ open, handleClose, title, message, form = false }) => {
   return (
     <Dialog
       open={open}
@@ -21,9 +21,11 @@ const AlertDialog = ({ open, handleClose, title, message }) => {
         <DialogContentText id="alert-dialog-slide-description">{message}</DialogContentText>
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleClose} color="primary">
-          Fechar
-        </Button>
+        {!form && (
+          <Button onClick={handleClose} color="primary">
+            Fechar
+          </Button>
+        )}
       </DialogActions>
     </Dialog>
   )

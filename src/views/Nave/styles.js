@@ -28,6 +28,7 @@ const useStyles = makeStyles({
   },
   boxContainer: {
     zIndex: 3,
+    color: 'white',
   },
   paper: {
     padding: 30,

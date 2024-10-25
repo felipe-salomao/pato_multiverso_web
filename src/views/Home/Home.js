@@ -13,7 +13,7 @@ const Home = () => {
   }
 
   return (
-    <Box display="flex" justifyContent="center" alignItems="center" minHeight="100vh">
+    <Box display="flex" justifyContent="center" alignItems="center" minHeight="100vh" className={classes.root}>
       <img src={patolinoImg} alt="Pato" className={classes.patoImg} />
       <Box className={classes.dialogContainer}>
         <Paper className={classes.dialog}>

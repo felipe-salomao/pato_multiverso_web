@@ -23,6 +23,11 @@ const useStyles = makeStyles({
     display: 'flex',
     justifyContent: 'space-around',
   },
+  boxText: {
+    zIndex: 3,
+    color: 'white',
+    textAlign: 'center',
+  },
 })
 
 export default useStyles

@@ -15,6 +15,7 @@ import {
   IconButton,
   Tooltip,
   TablePagination,
+  Typography,
 } from '@material-ui/core'
 
 import VisibilityIcon from '@material-ui/icons/Visibility'
@@ -105,7 +106,9 @@ const NaveTable = ({ naves, isLoading }) => {
             />
           </TableContainer>
         ) : (
-          <Box>Carregando...</Box>
+          <Typography variant="h2" className={classes.boxText}>
+            Você ainda não registrou nenhuma nave
+          </Typography>
         )}
       </Grid>
     </Grid>
